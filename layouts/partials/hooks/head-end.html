@@ -1,0 +1,98 @@
+{{/* Canonical URL */}}
+<link rel="canonical" href="{{ .Permalink }}" />
+
+{{/* Default OG image fallback */}}
+{{ $ogImage := "" }}
+{{ if .Params.image }}
+  {{ $ogImage = .Params.image | absURL }}
+{{ else }}
+  {{ $ogImage = "images/og-default.png" | absURL }}
+{{ end }}
+<meta property="og:image" content="{{ $ogImage }}" />
+<meta name="twitter:image" content="{{ $ogImage }}" />
+
+{{/* JSON-LD: Organization (all pages) */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Dojo Consortium",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "{{ .Site.Params.description }}",
+  "license": "{{ .Site.Params.license }}"
+}
+</script>
+
+{{/* JSON-LD: WebSite with search (homepage only) */}}
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ .Site.Title }}",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "{{ .Site.Params.description }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ .Site.BaseURL }}search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{{ end }}
+
+{{/* JSON-LD: Article (documentation pages) */}}
+{{ if and (not .IsHome) .IsPage }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ .Title }}",
+  "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+  {{ with .GitInfo }}"dateModified": "{{ .AuthorDate.Format "2006-01-02T15:04:05Z07:00" }}",{{ end }}
+  "author": {
+    "@type": "Organization",
+    "name": "Dojo Consortium"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Dojo Consortium",
+    "url": "{{ $.Site.BaseURL }}"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  }
+}
+</script>
+{{ end }}
+
+{{/* JSON-LD: BreadcrumbList */}}
+{{ if not .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ .Site.BaseURL }}"
+    }{{ $position := 1 }}{{ range .Ancestors.Reverse }}{{ if not .IsHome }}{{ $position = add $position 1 }},
+    {
+      "@type": "ListItem",
+      "position": {{ $position }},
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }{{ end }}{{ end }}{{ $position = add $position 1 }},
+    {
+      "@type": "ListItem",
+      "position": {{ $position }},
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+  ]
+}
+</script>
+{{ end }}

@@ -1,0 +1,16 @@
+{{- /* Hugo template for generating llms-full.txt at build time */ -}}
+# {{ .Site.Title }}
+
+> {{ .Site.Params.description }}
+
+{{ range .Site.RegularPages -}}
+## {{ .Title }}
+
+URL: {{ .Permalink }}
+{{ with .Description }}Description: {{ . }}
+{{ end }}
+{{ .Plain | truncate 2000 }}
+
+---
+
+{{ end -}}

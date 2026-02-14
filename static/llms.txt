@@ -1,0 +1,35 @@
+# Dojo Consortium
+
+> Production tested playbooks and methods for delivering software better
+
+The Dojo Consortium was formed in 2018 by practitioners from several Fortune 100 Dojos. Dojos use immersive learning techniques to help teams improve their delivery outcomes in their context. This site is the knowledge base for things we have found effective for helping teams deliver sooner, safer, and happier while providing better outcomes for the organizations and the end-users.
+
+## Documentation Sections
+
+- [Starting CD](https://dojoconsortium.org/docs/cd/): Migrating your system to Continuous Delivery
+- [Work Decomposition](https://dojoconsortium.org/docs/work-decomposition/): Breaking down work to enable small batch delivery, faster feedback, and predictable outcomes
+- [Team Workflow](https://dojoconsortium.org/docs/workflow-management/): Practices for managing team workflow, making work visible, and optimizing flow
+- [Designing Tests for CD](https://dojoconsortium.org/docs/testing/): Test patterns, principles, and best practices for building fast, reliable test suites
+- [Metrics Overview](https://dojoconsortium.org/docs/metrics/): Key metrics for measuring and improving Continuous Delivery performance
+- [Reference Materials](https://dojoconsortium.org/docs/reference/): Glossaries, checklists, and reference materials
+
+## Key Topics
+
+- Continuous Integration and Continuous Delivery (CI/CD)
+- Trunk-based development and branching strategies
+- Test-driven development (TDD) and behavior-driven development (BDD)
+- Value stream mapping
+- DORA metrics (deployment frequency, lead time, change failure rate, mean time to restore)
+- Story slicing and work breakdown
+- Code review practices
+- Limiting work in progress (WIP)
+
+## Content Details
+
+- Approximately 60 documentation pages
+- Full content available at: https://dojoconsortium.org/llms-full.txt
+- Source repository: https://github.com/devopsdojoconsortium/dojoconsortium.org
+
+## License
+
+Content is licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).

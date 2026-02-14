@@ -98,7 +98,7 @@ After establishing a production pipeline, focus on improving the quality signal:
 
 Use the [Theory of Constraints (TOC)](https://www.tocinstitute.org/theory-of-constraints.html) to continuously improve your delivery process:
 
-1. [Identify the system constraint](/docs/vsm)
+1. [Identify the system constraint](/docs/reference/value-stream-mapping/)
 2. Decide how to exploit the constraint
 3. Subordinate everything else to the above decisions
 4. Elevate the constraint
